@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCA2E4B9-48FE-4A81-B637-C6E12CEB6BA6}</ProjectGuid>
+    <ProjectGuid>{80D7471E-65CF-4070-93AC-D3B28ED32E43}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Radio7.BDD</RootNamespace>
-    <AssemblyName>Radio7.BDD</AssemblyName>
+    <RootNamespace>Radio7.BDD.Test</RootNamespace>
+    <AssemblyName>Radio7.BDD.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,17 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
-    </Reference>
-    <Reference Include="WebDriver">
-      <HintPath>..\packages\Selenium.WebDriver.2.35.0\lib\net40\WebDriver.dll</HintPath>
-    </Reference>
-    <Reference Include="WebDriver.Support">
-      <HintPath>..\packages\Selenium.Support.2.35.0\lib\net40\WebDriver.Support.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -54,21 +43,15 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise />
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DependancyResolution.cs" />
-    <Compile Include="ExpectedConditionsExtensions.cs" />
-    <Compile Include="ISeleniumConfig.cs" />
-    <Compile Include="WebDriverExtensions.cs" />
-    <Compile Include="Page.cs" />
+    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeleniumConfig.cs" />
-    <Compile Include="WebDriverType.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
