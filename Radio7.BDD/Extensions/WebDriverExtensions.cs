@@ -6,6 +6,20 @@ namespace Radio7.BDD.Extensions
 {
     public static class WebDriverExtensions
     {
+        internal static void NavigateTo(this IWebDriver webDriver, Uri url, Uri baseUrl)
+        {
+            if (url.IsAbsoluteUri)
+            {
+                if (webDriver.Url.Equals(url.ToString())) return;
+                webDriver.Navigate().GoToUrl(url);
+                return;
+            }
+
+            if (webDriver.Url.Equals(baseUrl + url.ToString())) return;
+
+            webDriver.Navigate().GoToUrl(baseUrl + url.ToString());
+        }
+
         public static IWebElement WaitUntilElementExists(this IWebDriver webDriver, By by, int timeoutInSeconds = 30)
         {
             var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds));

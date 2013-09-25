@@ -33,9 +33,11 @@ namespace Radio7.BDD
         public virtual void InitializeDependancies()
         {
             var webDriver = GetWebDriver();
+            //var commonSteps = new CommonSteps(webDriver, _seleniumConfig);
 
             _objectContainer.RegisterInstanceAs(webDriver);
             _objectContainer.RegisterInstanceAs(_seleniumConfig);
+            //_objectContainer.RegisterInstanceAs(commonSteps);
         }
 
         private IWebDriver GetWebDriver()

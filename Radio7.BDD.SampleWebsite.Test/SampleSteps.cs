@@ -7,29 +7,27 @@ namespace Radio7.BDD.SampleWebsite.Test
     public class SampleSteps 
     {
         private readonly SamplePage _samplePage;
+        private readonly CommonSteps _commonSteps;
 
-        public SampleSteps(SamplePage samplePage)
+        public SampleSteps(SamplePage samplePage, CommonSteps commonSteps)
         {
             _samplePage = samplePage;
+            _commonSteps = commonSteps;
             _samplePage.NavigateTo();
         }
 
-        [Given(@"I have entered (.*) into the calculator")]
-        public void GivenIHaveEnteredIntoTheCalculator(int p0)
+        [Given(@"I wait for the value ""(.*)"" to be present in element with id ""(.*)"" to timeout")]
+        public void GivenIWaitForTheValueToBePresentInElementWithIdToTimeout(string text, string id)
         {
-            throw new NotImplementedException();
-        }
-
-        [When(@"I press add")]
-        public void WhenIPressAdd()
-        {
-            throw new NotImplementedException();
-        }
-
-        [Then(@"the result should be (.*) on the screen")]
-        public void ThenTheResultShouldBeOnTheScreen(int p0)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                _commonSteps.GivenIWaitForValueToBePresentInElementWithId(text, id);
+            }
+            catch (Exception ex)
+            {
+                // TODO: promote to infrastructure
+                ScenarioContext.Current["LastExceptionTypeName"] = ex.GetType().Name;
+            }
         }
     }
 }

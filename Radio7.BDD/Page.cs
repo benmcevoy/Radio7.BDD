@@ -1,6 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 using Radio7.BDD.Config;
+using Radio7.BDD.Extensions;
 
 namespace Radio7.BDD
 {
@@ -17,7 +18,7 @@ namespace Radio7.BDD
 
         public virtual void NavigateTo()
         {
-            _webDriver.Navigate().GoToUrl(Url);
+            _webDriver.NavigateTo(Url, _seleniumConfig.BaseUrl);
         }
 
         protected IWebDriver WebDriver { get { return _webDriver; }}

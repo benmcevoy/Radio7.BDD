@@ -70,11 +70,11 @@ namespace Radio7.BDD.SampleWebsite.Test
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("TextToBePresentInElement")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Wait for TextToBePresentInElement")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WaitForExpectedConditions")]
-        public virtual void TextToBePresentInElement()
+        public virtual void WaitForTextToBePresentInElement()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TextToBePresentInElement", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Wait for TextToBePresentInElement", ((string[])(null)));
 #line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -82,9 +82,30 @@ this.ScenarioSetup(scenarioInfo);
 #line 7
  testRunner.And("I click the element with id \"insertTextInElementAfterDelayButton\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 8
- testRunner.When("I wait for the value \"test value\" to be present in element with id \"textElement\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Then("I wait for the value \"test value\" to be present in element with id \"textElement\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 9
- testRunner.Then("field with id \"textElement\" has value \"test value\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("the field with id \"textElement\" has value \"test value\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Timeout waiting for TextToBePresentInElement")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WaitForExpectedConditions")]
+        public virtual void TimeoutWaitingForTextToBePresentInElement()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Timeout waiting for TextToBePresentInElement", ((string[])(null)));
+#line 11
+this.ScenarioSetup(scenarioInfo);
+#line 12
+ testRunner.Given("I have navigated to \"/SamplePage.html\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 13
+ testRunner.And("I click the element with label \"insert text in element after long delay\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+ testRunner.And("I wait for the value \"test value\" to be present in element with id \"textElement\" " +
+                    "to timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 15
+ testRunner.Then("the expected exception is of type \"WebDriverTimeoutException\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
