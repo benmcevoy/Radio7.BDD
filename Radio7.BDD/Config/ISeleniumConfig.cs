@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Radio7.BDD
+namespace Radio7.BDD.Config
 {
     public interface ISeleniumConfig
     {

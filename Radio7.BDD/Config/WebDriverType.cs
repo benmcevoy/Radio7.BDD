@@ -1,4 +1,4 @@
-﻿namespace Radio7.BDD
+﻿namespace Radio7.BDD.Config
 {
     public enum WebDriverType
     {

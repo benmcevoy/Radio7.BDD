@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace Radio7.BDD
+namespace Radio7.BDD.Extensions
 {
     /// <summary>
     /// Canned <see cref="ExpectedConditions">ExpectedConditions</see> which are generally useful within webdriver

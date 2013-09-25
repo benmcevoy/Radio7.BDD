@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace Radio7.BDD
+namespace Radio7.BDD.Config
 {
     public class SeleniumConfig : ConfigurationSection, ISeleniumConfig
     {

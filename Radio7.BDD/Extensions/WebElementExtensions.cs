@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace Radio7.BDD
+namespace Radio7.BDD.Extensions
 {
     public static class WebElementExtensions
     {

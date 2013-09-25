@@ -5,6 +5,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using Radio7.BDD.Config;
 using TechTalk.SpecFlow;
 
 namespace Radio7.BDD

@@ -1,5 +1,6 @@
 ﻿using System;
 using OpenQA.Selenium;
+using Radio7.BDD.Config;
 
 namespace Radio7.BDD
 {
