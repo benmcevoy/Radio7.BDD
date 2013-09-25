@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Radio7.BDD.SampleWebsite", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Radio7.BDD.SampleWebsite.Test", "Radio7.BDD.SampleWebsite.Test\Radio7.BDD.SampleWebsite.Test.csproj", "{E5FF6010-5D7B-4315-B116-D632DE65049F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Radio7.BDD.Test", "Radio7.BDD.Test\Radio7.BDD.Test.csproj", "{80D7471E-65CF-4070-93AC-D3B28ED32E43}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,10 +25,6 @@ Global
 		{E5FF6010-5D7B-4315-B116-D632DE65049F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5FF6010-5D7B-4315-B116-D632DE65049F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5FF6010-5D7B-4315-B116-D632DE65049F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80D7471E-65CF-4070-93AC-D3B28ED32E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80D7471E-65CF-4070-93AC-D3B28ED32E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80D7471E-65CF-4070-93AC-D3B28ED32E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80D7471E-65CF-4070-93AC-D3B28ED32E43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

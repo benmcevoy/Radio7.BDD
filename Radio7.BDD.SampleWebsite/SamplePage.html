@@ -4,6 +4,20 @@
     <title></title>
 </head>
 <body>
+    
+    <input type="text" value="" id="textElement" name="textElement"/>
+    
+    <button id="insertTextInElementAfterDelayButton" >insert text in element after delay</button>
+    
+    
+    <script type="text/javascript">
 
+        document.getElementById('insertTextInElementAfterDelayButton').onclick = function (e) {
+            window.setTimeout(function() {
+                document.getElementById('textElement').value = "test value";
+            }, 5000);
+        };
+
+    </script>
 </body>
 </html>
