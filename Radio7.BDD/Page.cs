@@ -21,9 +21,9 @@ namespace Radio7.BDD
             _webDriver.NavigateTo(Url, _seleniumConfig.BaseUrl);
         }
 
-        protected IWebDriver WebDriver { get { return _webDriver; }}
+        public IWebDriver WebDriver { get { return _webDriver; }}
 
-        protected ISeleniumConfig SeleniumConfig { get { return _seleniumConfig; } }
+        public ISeleniumConfig SeleniumConfig { get { return _seleniumConfig; } }
 
         public abstract Uri Url { get; }
     }

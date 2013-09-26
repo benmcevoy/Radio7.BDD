@@ -7,5 +7,7 @@ namespace Radio7.BDD.Config
         Uri BaseUrl { get; set; }
 
         WebDriverType WebDriverType { get; set; }
+
+        int ImplicitWaitMilliseconds { get; set; }
     }
 }

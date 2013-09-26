@@ -20,6 +20,19 @@ namespace Radio7.BDD.Extensions
             webDriver.Navigate().GoToUrl(baseUrl + url.ToString());
         }
 
+        public static bool ElementExists(this IWebDriver webDriver, By by)
+        {
+            try
+            {
+                webDriver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
         public static IWebElement WaitUntilElementExists(this IWebDriver webDriver, By by, int timeoutInSeconds = 30)
         {
             var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds));

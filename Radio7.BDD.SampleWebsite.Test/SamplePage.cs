@@ -15,5 +15,10 @@ namespace Radio7.BDD.SampleWebsite.Test
         {
             get { return new Uri("/SamplePage.html", UriKind.Relative); }
         }
+
+        public IWebElement TextElement
+        {
+            get { return WebDriver.FindElement(By.Id("textElement")); }
+        }
     }
 }

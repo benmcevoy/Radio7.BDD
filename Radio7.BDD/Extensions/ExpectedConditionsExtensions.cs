@@ -1,6 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System.Diagnostics;
 
 namespace Radio7.BDD.Extensions
 {
@@ -84,7 +85,7 @@ namespace Radio7.BDD.Extensions
             {
                 try
                 {
-                    return !driver.FindElement(locator).Text.Equals(text);
+                    return !driver.FindElement(locator).Text.Equals(text) && !driver.FindElement(locator).Displayed;
                 }
                 catch (NoSuchElementException)
                 {

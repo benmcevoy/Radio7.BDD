@@ -8,19 +8,59 @@
 
     <button id="insertTextInElementAfterDelayButton">insert text in element after delay</button>
     <button id="insertTextInElementAfterLongDelayButton">insert text in element after long delay</button>
+    <button id="raiseAlertAfterDelayButton">raise alert after delay</button>
+    <button id="setTextAndVisibilityHiddenButton">set text then hide after delay</button>
+    <button id="setTextAndDisplayNoneButton">set text then display none after delay</button>
+    <button id="setTextAndRemoveButton">set text then remove after delay</button>
 
     <script type="text/javascript">
 
         document.getElementById('insertTextInElementAfterDelayButton').onclick = function (e) {
             window.setTimeout(function () {
                 document.getElementById('textElement').value = "test value";
-            }, 5000);
+            }, 3000);
         };
 
         document.getElementById('insertTextInElementAfterLongDelayButton').onclick = function (e) {
             window.setTimeout(function () {
                 document.getElementById('textElement').value = "test value";
             }, 35000);
+        };
+        
+        document.getElementById('raiseAlertAfterDelayButton').onclick = function (e) {
+            window.setTimeout(function () {
+                alert('alert raised');
+            }, 3000);
+        };
+
+        document.getElementById('setTextAndVisibilityHiddenButton').onclick = function (e) {
+            var textElement = document.getElementById('textElement');
+
+            textElement.value = 'disappearing soon';
+
+            window.setTimeout(function () {
+                 textElement.style.visibility = 'hidden';
+            }, 3000);
+        };
+        
+        document.getElementById('setTextAndDisplayNoneButton').onclick = function (e) {
+            var textElement = document.getElementById('textElement');
+
+            textElement.value = 'disappearing soon';
+
+            window.setTimeout(function () {
+                textElement.style.display = 'none';
+            }, 3000);
+        };
+        
+        document.getElementById('setTextAndRemoveButton').onclick = function (e) {
+            var textElement = document.getElementById('textElement');
+
+            textElement.value = 'disappearing soon';
+
+            window.setTimeout(function () {
+                textElement.parentNode.removeChild(textElement);
+            }, 3000);
         };
 
     </script>

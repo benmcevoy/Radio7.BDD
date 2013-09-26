@@ -18,5 +18,12 @@ namespace Radio7.BDD.Config
             get { return (WebDriverType)this["webDriverType"]; }
             set { this["webDriverType"] = value; }
         }
+
+        [ConfigurationProperty("implicitWaitMilliseconds", DefaultValue = 0)]
+        public int ImplicitWaitMilliseconds
+        {
+            get { return (int)this["implicitWaitMilliseconds"]; }
+            set { this["implicitWaitMilliseconds"] = value; }
+        }
     }
 }

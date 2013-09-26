@@ -30,9 +30,9 @@ namespace Radio7.BDD
             _webDriver.NavigateTo(new Uri(url, UriKind.RelativeOrAbsolute), _seleniumConfig.BaseUrl);
         }
 
-        [Given(@"I click the element with label ""(.*)""")]
-        [When(@"I click the element with label ""(.*)""")]
-        public void GivenIClickTheElementWithLabel(string label)
+        [Given(@"I click the element labelled ""(.*)""")]
+        [When(@"I click the element labelled ""(.*)""")]
+        public void GivenIClickTheElementLabelled(string label)
         {
             var field = _webDriver.FindElement(By.XPath(string.Format("//*[text()='{0}']", label)));
 
