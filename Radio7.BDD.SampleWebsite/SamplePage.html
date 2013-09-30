@@ -12,25 +12,29 @@
     <button id="setTextAndVisibilityHiddenButton">set text then hide after delay</button>
     <button id="setTextAndDisplayNoneButton">set text then display none after delay</button>
     <button id="setTextAndRemoveButton">set text then remove after delay</button>
+    <button id="setVisibilityHiddenAfterLongDelayButton">set visibility hidden after long delay</button>
 
     <script type="text/javascript">
+
+        var shortDelay = 3000;
+        var longDelay = 35000;
 
         document.getElementById('insertTextInElementAfterDelayButton').onclick = function (e) {
             window.setTimeout(function () {
                 document.getElementById('textElement').value = "test value";
-            }, 3000);
+            }, shortDelay);
         };
 
         document.getElementById('insertTextInElementAfterLongDelayButton').onclick = function (e) {
             window.setTimeout(function () {
                 document.getElementById('textElement').value = "test value";
-            }, 35000);
+            }, longDelay);
         };
         
         document.getElementById('raiseAlertAfterDelayButton').onclick = function (e) {
             window.setTimeout(function () {
                 alert('alert raised');
-            }, 3000);
+            }, shortDelay);
         };
 
         document.getElementById('setTextAndVisibilityHiddenButton').onclick = function (e) {
@@ -40,7 +44,7 @@
 
             window.setTimeout(function () {
                  textElement.style.visibility = 'hidden';
-            }, 3000);
+            }, shortDelay);
         };
         
         document.getElementById('setTextAndDisplayNoneButton').onclick = function (e) {
@@ -50,7 +54,7 @@
 
             window.setTimeout(function () {
                 textElement.style.display = 'none';
-            }, 3000);
+            }, shortDelay);
         };
         
         document.getElementById('setTextAndRemoveButton').onclick = function (e) {
@@ -60,7 +64,15 @@
 
             window.setTimeout(function () {
                 textElement.parentNode.removeChild(textElement);
-            }, 3000);
+            }, shortDelay);
+        };
+        
+        document.getElementById('setVisibilityHiddenAfterLongDelayButton').onclick = function (e) {
+            var textElement = document.getElementById('textElement');
+
+            window.setTimeout(function () {
+                textElement.style.visibility = 'hidden';
+            }, longDelay);
         };
 
     </script>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using Radio7.BDD.Config;
@@ -70,10 +69,26 @@ namespace Radio7.BDD
         {
             // TODO: promote to infrastructure (along with current page, is logged in etc).
             var lastExceptionTypeName = ScenarioContext.Current.ContainsKey("LastExceptionTypeName") ?
-                (string)ScenarioContext.Current["LastExceptionTypeName"] : 
+                (string)ScenarioContext.Current["LastExceptionTypeName"] :
                 "";
 
             Assert.AreEqual(expectedExceptionTypeName, lastExceptionTypeName);
+        }
+
+        /// <summary>
+        /// Helper method to catch exceptions and stash the exception type name into the scenario context
+        /// </summary>
+        /// <param name="action"></param>
+        public void ExpectException(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (Exception exception)
+            {
+                ScenarioContext.Current["LastExceptionTypeName"] = exception.GetType().Name;
+            }
         }
     }
 }

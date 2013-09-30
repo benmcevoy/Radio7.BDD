@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using Radio7.BDD.Extensions;
 using TechTalk.SpecFlow;
@@ -23,15 +22,7 @@ namespace Radio7.BDD.SampleWebsite.Test
         [When(@"I wait for the value ""(.*)"" to be present in element with id ""(.*)"" to timeout")]
         public void GivenIWaitForTheValueToBePresentInElementWithIdToTimeout(string text, string id)
         {
-            try
-            {
-                _commonSteps.GivenIWaitForValueToBePresentInElementWithId(text, id);
-            }
-            catch (Exception exception)
-            {
-                // TODO: promote to infrastructure
-                ScenarioContext.Current["LastExceptionTypeName"] = exception.GetType().Name;
-            }
+            _commonSteps.ExpectException(() => _commonSteps.GivenIWaitForValueToBePresentInElementWithId(text, id));
         }
 
         [Given(@"I wait for an alert to be displayed")]
@@ -48,8 +39,23 @@ namespace Radio7.BDD.SampleWebsite.Test
             _samplePage.WebDriver.SwitchTo().Alert();
         }
 
-        [Given(@"I wait for element with id ""(.*)"" and value ""(.*)"" to be invisible")]
-        [When(@"I wait for element with id ""(.*)"" and value ""(.*)"" to be invisible")]
+        // using (.*) causes ambiguity
+        [Given(@"I wait for element with id ""(\w+)"" to be invisible to timeout")]
+        [When(@"I wait for element with id ""(\w+)"" to be invisible to timeout")]
+        public void GivenIWaitForElementWithIdToBeInvisibleToTimeout(string id)
+        {
+            _commonSteps.ExpectException(() => GivenIWaitForElementWithIdToBeInvisible(id));
+        }
+
+        [Given(@"I wait for element with id ""(\w+)"" to be invisible")]
+        [When(@"I wait for element with id ""(\w+)"" to be invisible")]
+        public void GivenIWaitForElementWithIdToBeInvisible(string id)
+        {
+            _samplePage.WebDriver.WaitUntilElementIsInvisible(By.Id(id));
+        }
+
+        [Given(@"I wait for element with id ""(\w+)"" and value ""(.*)"" to be invisible")]
+        [When(@"I wait for element with id ""(\w+)"" and value ""(.*)"" to be invisible")]
         public void GivenIWaitForElementWithIdAndValueToBeInvisible(string id, string text)
         {
             _samplePage.WebDriver.WaitUntilElementContainsTextIsInvisible(By.Id(id), text);

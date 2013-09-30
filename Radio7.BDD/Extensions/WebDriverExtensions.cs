@@ -15,9 +15,9 @@ namespace Radio7.BDD.Extensions
                 return;
             }
 
-            if (webDriver.Url.Equals(baseUrl + url.ToString())) return;
+            if (webDriver.Url.Equals(new Uri(baseUrl, url).ToString())) return;
 
-            webDriver.Navigate().GoToUrl(baseUrl + url.ToString());
+            webDriver.Navigate().GoToUrl(new Uri(baseUrl, url));
         }
 
         public static bool ElementExists(this IWebDriver webDriver, By by)

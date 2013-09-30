@@ -41,3 +41,14 @@ Scenario: Wait for ElementContainsTextIsInvisible by removing from dom
 	When I wait for element with id "textElement" and value "disappearing soon" to be invisible
 	Then element with id "textElement" is invisible
 
+Scenario: Wait for ElementIsInvisible by setting visibilty hidden
+	Given I have navigated to "/SamplePage.html"
+	And I click the element with id "setTextAndVisibilityHiddenButton"
+	When I wait for element with id "textElement" to be invisible
+	Then element with id "textElement" is invisible
+
+Scenario: Timeout for ElementIsInvisible by setting visibilty hidden
+	Given I have navigated to "/SamplePage.html"
+	And I click the element with id "setVisibilityHiddenAfterLongDelayButton"
+	When I wait for element with id "textElement" to be invisible to timeout
+	Then the expected exception is of type "WebDriverTimeoutException"
