@@ -11,3 +11,4 @@ namespace Radio7.BDD.Config
         int ImplicitWaitMilliseconds { get; set; }
     }
 }
+

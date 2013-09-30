@@ -64,10 +64,17 @@ namespace Radio7.BDD
             _webDriver.WaitUntilTextToBePresentInElementValue(By.Id(id), text);
         }
 
+        [Given(@"element with id ""(.*)"" is clickable")]
+        [When(@"element with id ""(.*)"" is clickable")]
+        [Then(@"element with id ""(.*)"" is clickable")]
+        public void GivenElementWithIdIsClickable(string id)
+        {
+            _webDriver.WaitUntilElementToBeClickable(By.Id(id));
+        }
+
         [Then(@"the expected exception is of type ""(.*)""")]
         public void ThenTheExpectedExceptionIsOfType(string expectedExceptionTypeName)
         {
-            // TODO: promote to infrastructure (along with current page, is logged in etc).
             var lastExceptionTypeName = ScenarioContext.Current.ContainsKey("LastExceptionTypeName") ?
                 (string)ScenarioContext.Current["LastExceptionTypeName"] :
                 "";

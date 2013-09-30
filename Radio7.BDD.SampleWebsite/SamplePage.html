@@ -5,6 +5,7 @@
 </head>
 <body>
     <input type="text" value="" id="textElement" name="textElement" />
+    <input type="text" value="disabled by default" disabled="disabled" id="disabledTextElement" name="disabledTextElement" />
 
     <button id="insertTextInElementAfterDelayButton">insert text in element after delay</button>
     <button id="insertTextInElementAfterLongDelayButton">insert text in element after long delay</button>
@@ -13,6 +14,7 @@
     <button id="setTextAndDisplayNoneButton">set text then display none after delay</button>
     <button id="setTextAndRemoveButton">set text then remove after delay</button>
     <button id="setVisibilityHiddenAfterLongDelayButton">set visibility hidden after long delay</button>
+    <button id="setEnabledAfterDelayButton">set enabled after delay</button>
 
     <script type="text/javascript">
 
@@ -73,6 +75,14 @@
             window.setTimeout(function () {
                 textElement.style.visibility = 'hidden';
             }, longDelay);
+        };
+        
+        document.getElementById('setEnabledAfterDelayButton').onclick = function (e) {
+            var textElement = document.getElementById('disabledTextElement');
+
+            window.setTimeout(function () {
+                textElement.disabled = false;
+            }, shortDelay);
         };
 
     </script>

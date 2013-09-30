@@ -1,7 +1,6 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System.Diagnostics;
 
 namespace Radio7.BDD.Extensions
 {

@@ -131,11 +131,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Wait for ElementContainsTextIsInvisible by setting visibilty hidden")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Wait for ElementContainsTextIsInvisible by setting visibility hidden")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WaitForExpectedConditions")]
-        public virtual void WaitForElementContainsTextIsInvisibleBySettingVisibiltyHidden()
+        public virtual void WaitForElementContainsTextIsInvisibleBySettingVisibilityHidden()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Wait for ElementContainsTextIsInvisible by setting visibilty hidden", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Wait for ElementContainsTextIsInvisible by setting visibility hidden", ((string[])(null)));
 #line 23
 this.ScenarioSetup(scenarioInfo);
 #line 24
@@ -203,11 +203,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Wait for ElementIsInvisible by setting visibilty hidden")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Wait for ElementIsInvisible by setting visibility hidden")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WaitForExpectedConditions")]
-        public virtual void WaitForElementIsInvisibleBySettingVisibiltyHidden()
+        public virtual void WaitForElementIsInvisibleBySettingVisibilityHidden()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Wait for ElementIsInvisible by setting visibilty hidden", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Wait for ElementIsInvisible by setting visibility hidden", ((string[])(null)));
 #line 44
 this.ScenarioSetup(scenarioInfo);
 #line 45
@@ -223,11 +223,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Timeout for ElementIsInvisible by setting visibilty hidden")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Timeout for ElementIsInvisible by setting visibility hidden")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WaitForExpectedConditions")]
-        public virtual void TimeoutForElementIsInvisibleBySettingVisibiltyHidden()
+        public virtual void TimeoutForElementIsInvisibleBySettingVisibilityHidden()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Timeout for ElementIsInvisible by setting visibilty hidden", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Timeout for ElementIsInvisible by setting visibility hidden", ((string[])(null)));
 #line 50
 this.ScenarioSetup(scenarioInfo);
 #line 51
@@ -238,6 +238,24 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("I wait for element with id \"textElement\" to be invisible to timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 54
  testRunner.Then("the expected exception is of type \"WebDriverTimeoutException\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Wait for ElementToBeClickable")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WaitForExpectedConditions")]
+        public virtual void WaitForElementToBeClickable()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Wait for ElementToBeClickable", ((string[])(null)));
+#line 56
+this.ScenarioSetup(scenarioInfo);
+#line 57
+ testRunner.Given("I have navigated to \"/SamplePage.html\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 58
+ testRunner.And("I click the element with id \"setEnabledAfterDelayButton\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 59
+ testRunner.Then("element with id \"disabledTextElement\" is clickable", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
