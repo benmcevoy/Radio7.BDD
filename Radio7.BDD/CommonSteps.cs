@@ -38,6 +38,15 @@ namespace Radio7.BDD
             field.Click();
         }
 
+        [Given(@"I enter ""(.*)"" in the element with id ""(.*)""")]
+        [When(@"I enter ""(.*)"" in the element with id ""(.*)""")]
+        public void GivenIEnterInTheElementWithId(string value, string id)
+        {
+            var field = _webDriver.FindElement(By.Id(id));
+
+            field.SendKeys(value);
+        }
+
         [Given(@"I click the element with id ""(.*)""")]
         [When(@"I click the element with id ""(.*)""")]
         public void GivenIClickTheElementWithId(string id)
@@ -45,6 +54,15 @@ namespace Radio7.BDD
             var field = _webDriver.FindElement(By.Id(id));
 
             field.Click();
+        }
+
+        [Given(@"I clear the element with id ""(.*)""")]
+        [When(@"I clear the element with id ""(.*)""")]
+        public void GivenIClearTheElementWithId(string id)
+        {
+            var field = _webDriver.FindElement(By.Id(id));
+
+            field.Clear();
         }
 
         [Given(@"the field with id ""(.*)"" has value ""(.*)""")]
@@ -70,6 +88,13 @@ namespace Radio7.BDD
         public void GivenElementWithIdIsClickable(string id)
         {
             _webDriver.WaitUntilElementToBeClickable(By.Id(id));
+        }
+
+        [When(@"I click OK on the confirmation dialog")]
+        [Then(@"I click OK on the confirmation dialog")]
+        public void WhenIClickOKOnTheConfirmationDialog()
+        {
+            _webDriver.SwitchTo().Alert().Accept();
         }
 
         [Then(@"the expected exception is of type ""(.*)""")]
