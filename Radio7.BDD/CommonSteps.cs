@@ -29,6 +29,36 @@ namespace Radio7.BDD
             _webDriver.NavigateTo(new Uri(url, UriKind.RelativeOrAbsolute), _seleniumConfig.BaseUrl);
         }
 
+        [Given(@"the current url is ""(.*)""")]
+        [Then(@"the current url is ""(.*)""")]
+        public void ThenTheCurrentUrlIs(string url)
+        {
+            try
+            {
+                var currentUrl = new Uri(_webDriver.Url);
+                Uri expectedUrl;
+
+                if (url.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                {
+                    expectedUrl = new Uri(url, UriKind.Absolute);
+                }
+                else
+                {
+                    expectedUrl = new Uri(
+                        string.Format("{0}/{1}",
+                            _seleniumConfig.BaseUrl.ToString().TrimEnd('/'),
+                            url.TrimStart('/')),
+                        UriKind.RelativeOrAbsolute);
+                }
+
+                Assert.IsTrue(currentUrl.PathAndQuery.Equals(expectedUrl.PathAndQuery, StringComparison.OrdinalIgnoreCase));
+            }
+            catch (UriFormatException)
+            {
+                Assert.Fail("The url '{0}' was not valid.", url);
+            }
+        }
+
         [Given(@"I click the element labelled ""(.*)""")]
         [When(@"I click the element labelled ""(.*)""")]
         public void GivenIClickTheElementLabelled(string label)
