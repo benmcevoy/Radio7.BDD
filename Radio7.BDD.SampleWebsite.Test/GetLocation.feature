@@ -11,9 +11,12 @@ Scenario: Check the current url is as expected after navigating a couple of page
 	And I have navigated to "/samplepage.html"
 	Then the current url is "/samplepage.html"
 
-
 Scenario: Check the current url is as expected after navigating 
 	Given I have navigated to "/newpage.html"
 	When I have navigated to "/samplepage.html"
 	And I have navigated to "/newpage.html"
 	Then the current url is "/newpage.html"
+	
+Scenario: Check the absolute url is as expected after navigating 
+	Given I have navigated to "/newpage.html"
+	Then the current url is "http://localhost:50523/newpage.html"
