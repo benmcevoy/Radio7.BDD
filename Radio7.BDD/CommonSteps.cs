@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using Radio7.BDD.Config;
@@ -151,6 +153,34 @@ namespace Radio7.BDD
             {
                 ScenarioContext.Current["LastExceptionTypeName"] = exception.GetType().Name;
             }
+        }
+
+        [Given("The browser window is at desktop size")]
+        public void GivenTheBrowserWindowIsDesktop()
+        {
+            _webDriver.Manage().Window.Maximize();
+
+            Thread.Sleep(500);
+
+            var originalSize = _webDriver.Manage().Window.Size;
+
+            Thread.Sleep(500);
+
+            _webDriver.Manage().Window.Size = new Size(_seleniumConfig.DesktopWindowWidth, originalSize.Height);
+        }
+
+        [Given("The browser window is at mobile size")]
+        public void GivenTheBrowserWindowIsMobile()
+        {
+            _webDriver.Manage().Window.Maximize();
+
+            Thread.Sleep(500);
+
+            var originalSize = _webDriver.Manage().Window.Size;
+
+            _webDriver.Manage().Window.Size = new Size(_seleniumConfig.MobileWindowWidth, originalSize.Height);
+
+            Thread.Sleep(500);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Drawing.Imaging;
 using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -15,6 +16,7 @@ namespace Radio7.BDD
     {
         private readonly IObjectContainer _objectContainer;
         private readonly ISeleniumConfig _seleniumConfig;
+        private IWebDriver _webDriver;
 
         protected DependancyResolution(IObjectContainer objectContainer)
         {
@@ -22,7 +24,7 @@ namespace Radio7.BDD
             _seleniumConfig = ResolveSeleniumConfig();
         }
 
-        private ISeleniumConfig ResolveSeleniumConfig()
+        private static ISeleniumConfig ResolveSeleniumConfig()
         {
             var config = ConfigurationManager.GetSection("seleniumConfig") as ISeleniumConfig;
 
@@ -32,14 +34,34 @@ namespace Radio7.BDD
         [BeforeScenario]
         public virtual void InitializeDependancies()
         {
-            var webDriver = GetWebDriver();
+            if (_webDriver != null) return;
 
-            webDriver.Manage()
+            _webDriver = GetWebDriver();
+
+            _webDriver.Manage()
                 .Timeouts()
                 .ImplicitlyWait(TimeSpan.FromMilliseconds(_seleniumConfig.ImplicitWaitMilliseconds));
 
-            _objectContainer.RegisterInstanceAs(webDriver);
+            // clear cookies and set browser to a consistent state for each test run
+            _webDriver.Manage().Cookies.DeleteAllCookies();
+            _webDriver.Manage().Window.Maximize();
+
+            _objectContainer.RegisterInstanceAs(_webDriver);
             _objectContainer.RegisterInstanceAs(_seleniumConfig);
+        }
+
+        [AfterScenario]
+        public virtual void Close()
+        {
+            if (ScenarioContext.Current.TestError != null && _webDriver is ITakesScreenshot)
+            {
+                var screenshot = (_webDriver as ITakesScreenshot).GetScreenshot();
+                var filename = string.Format("{0}.png", ScenarioContext.Current.ScenarioInfo.Title);
+
+                screenshot.SaveAsFile(filename, ImageFormat.Png);
+            }
+
+            _webDriver.Close();
         }
 
         private IWebDriver GetWebDriver()
@@ -47,14 +69,43 @@ namespace Radio7.BDD
             switch (_seleniumConfig.WebDriverType)
             {
                 case WebDriverType.Firefox:
-                    return new FirefoxDriver();
+                    return CreateFirefoxDriver(_seleniumConfig);
+
                 case WebDriverType.Chrome:
-                    return new ChromeDriver();
+                    return CreateChromeDriver(_seleniumConfig);
+
                 case WebDriverType.IE:
                     return new InternetExplorerDriver();
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private static IWebDriver CreateChromeDriver(ISeleniumConfig config)
+        {
+            var options = new ChromeOptions();
+            // --no-sandbox allows the test to be run under VS2013 in some cases
+            // --ignore-certificate-errors allow our self signed, untrusted certs
+            // --enable-logging --v=1 will also log messages from chrome, including console.log() 
+            // to chrome_debug.log in Chrome's user data directory (in the parent directory of Default/) 
+            options.AddArgument("--no-sandbox --ignore-certificate-errors");
+
+            if (!string.IsNullOrEmpty(config.BrowserPath)) options.BinaryLocation = config.BrowserPath;
+
+            var driver = string.IsNullOrWhiteSpace(config.DriverDirectory)
+                ? new ChromeDriver(options)
+                : new ChromeDriver(config.DriverDirectory, options);
+
+            return driver;
+        }
+
+        private static IWebDriver CreateFirefoxDriver(ISeleniumConfig config)
+        {
+            // firefox does not care about DriverDirectory
+            return string.IsNullOrEmpty(config.BrowserPath)
+                ? new FirefoxDriver()
+                : new FirefoxDriver(new FirefoxBinary(config.BrowserPath), new FirefoxProfile());
         }
     }
 }
