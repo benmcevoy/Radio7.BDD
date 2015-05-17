@@ -63,7 +63,7 @@ namespace Radio7.BDD
         [When(@"I click the element labelled ""(.*)""")]
         public void GivenIClickTheElementLabelled(string label)
         {
-            var field = _webDriver.FindElement(By.XPath(string.Format("//*[text()='{0}']", label)));
+            var field = _webDriver.WaitUntilElementIsClickable(By.XPath(string.Format("//*[text()='{0}']", label)));
 
             field.Click();
         }
@@ -72,7 +72,7 @@ namespace Radio7.BDD
         [When(@"I enter ""(.*)"" in the element with id ""(.*)""")]
         public void GivenIEnterInTheElementWithId(string value, string id)
         {
-            var field = _webDriver.FindElement(By.Id(id));
+            var field = _webDriver.WaitUntilElementIsClickable(By.Id(id));
 
             field.SendKeys(value);
         }
@@ -81,7 +81,7 @@ namespace Radio7.BDD
         [When(@"I click the element with id ""(.*)""")]
         public void GivenIClickTheElementWithId(string id)
         {
-            var field = _webDriver.FindElement(By.Id(id));
+            var field = _webDriver.WaitUntilElementIsClickable(By.Id(id));
 
             field.Click();
         }
@@ -90,7 +90,7 @@ namespace Radio7.BDD
         [When(@"I clear the element with id ""(.*)""")]
         public void GivenIClearTheElementWithId(string id)
         {
-            var field = _webDriver.FindElement(By.Id(id));
+            var field = _webDriver.WaitUntilElementIsClickable(By.Id(id));
 
             field.Clear();
         }
@@ -100,7 +100,7 @@ namespace Radio7.BDD
         [Then(@"the field with id ""(.*)"" has value ""(.*)""")]
         public void GivenFieldWithIdHasValue(string id, string value)
         {
-            var field = _webDriver.FindElement(By.Id(id));
+            var field = _webDriver.WaitUntilElementIsVisible(By.Id(id));
             Assert.AreEqual(value.ToLowerInvariant(), field.GetValue().ToLowerInvariant());
         }
 
@@ -109,7 +109,7 @@ namespace Radio7.BDD
         [Then(@"I wait for the value ""(.*)"" to be present in element with id ""(.*)""")]
         public void GivenIWaitForValueToBePresentInElementWithId(string text, string id)
         {
-            _webDriver.WaitUntilTextToBePresentInElementValue(By.Id(id), text);
+            _webDriver.WaitUntilTextIsPresentInElementValue(By.Id(id), text);
         }
 
         [Given(@"element with id ""(.*)"" is clickable")]
@@ -117,7 +117,7 @@ namespace Radio7.BDD
         [Then(@"element with id ""(.*)"" is clickable")]
         public void GivenElementWithIdIsClickable(string id)
         {
-            _webDriver.WaitUntilElementToBeClickable(By.Id(id));
+            _webDriver.WaitUntilElementIsClickable(By.Id(id));
         }
 
         [When(@"I click OK on the confirmation dialog")]

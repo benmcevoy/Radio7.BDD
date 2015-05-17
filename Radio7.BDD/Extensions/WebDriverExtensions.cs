@@ -75,42 +75,42 @@ namespace Radio7.BDD.Extensions
             return wait.Until(ExpectedConditionsExtensions.ElementIsInvisible(by));
         }
 
-        public static bool WaitUntilElementSelectionStateToBe(this IWebDriver webDriver, By by, bool selected, int timeoutInSeconds = 20)
+        public static bool WaitUntilElementSelectionStateIs(this IWebDriver webDriver, By by, bool selected, int timeoutInSeconds = 20)
         {
             var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds));
 
             return wait.Until(ExpectedConditionsExtensions.ElementSelectionStateToBe(by, selected));
         }
 
-        public static bool WaitUntilElementSelectionStateToBe(this IWebDriver webDriver, IWebElement webElement, bool selected, int timeoutInSeconds = 20)
+        public static bool WaitUntilElementSelectionStateIs(this IWebDriver webDriver, IWebElement webElement, bool selected, int timeoutInSeconds = 20)
         {
             var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds));
 
             return wait.Until(ExpectedConditionsExtensions.ElementSelectionStateToBe(webElement, selected));
         }
 
-        public static bool WaitUntilElementToBeSelected(this IWebDriver webDriver, By by, int timeoutInSeconds = 20)
+        public static bool WaitUntilElementIsSelected(this IWebDriver webDriver, By by, int timeoutInSeconds = 20)
         {
             var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds));
 
             return wait.Until(ExpectedConditionsExtensions.ElementToBeSelected(by));
         }
 
-        public static bool WaitUntilElementToBeSelected(this IWebDriver webDriver, IWebElement webElement, int timeoutInSeconds = 20)
+        public static bool WaitUntilElementIsSelected(this IWebDriver webDriver, IWebElement webElement, int timeoutInSeconds = 20)
         {
             var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds));
 
             return wait.Until(ExpectedConditionsExtensions.ElementToBeSelected(webElement));
         }
 
-        public static bool WaitUntilTextToBePresentInElement(this IWebDriver webDriver, By by, string text, int timeoutInSeconds = 20)
+        public static bool WaitUntilTextIsPresentInElement(this IWebDriver webDriver, By by, string text, int timeoutInSeconds = 20)
         {
             var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds));
 
             return wait.Until(ExpectedConditionsExtensions.TextToBePresentInElement(by, text));
         }
 
-        public static bool WaitUntilTextToBePresentInElementValue(this IWebDriver webDriver, By by, string text, int timeoutInSeconds = 20)
+        public static bool WaitUntilTextIsPresentInElementValue(this IWebDriver webDriver, By by, string text, int timeoutInSeconds = 20)
         {
             var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds));
 
@@ -124,7 +124,7 @@ namespace Radio7.BDD.Extensions
             return wait.Until(ExpectedConditionsExtensions.AlertIsPresent());
         }
 
-        public static IWebElement WaitUntilElementToBeClickable(this IWebDriver webDriver, By by, int timeoutInSeconds = 20)
+        public static IWebElement WaitUntilElementIsClickable(this IWebDriver webDriver, By by, int timeoutInSeconds = 20)
         {
             var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds));
 

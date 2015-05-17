@@ -68,7 +68,7 @@ namespace Radio7.BDD.SampleWebsite.Test
         {
             if (_samplePage.WebDriver.ElementExists(By.Id(id)))
             {
-                Assert.AreEqual(false, _samplePage.WebDriver.FindElement(By.Id(id)).Displayed);
+                Assert.AreEqual(false, _samplePage.WebDriver.WaitUntilElementExists(By.Id(id)).Displayed);
             }
         }
     }
