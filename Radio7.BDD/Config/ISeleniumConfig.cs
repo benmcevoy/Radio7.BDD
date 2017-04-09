@@ -47,6 +47,18 @@ namespace Radio7.BDD.Config
         /// The width of the browser window when Mobile has been requested
         /// </summary>
         int MobileWindowWidth { get; set; }
+
+        /// <summary>
+        /// Comma seperated list of tags to include in the test execution.
+        /// </summary>
+        string IncludeScenarioTags { get; set; }
+
+        /// <summary>
+        /// Comma seperated list of tags to exclude from the test execution.
+        /// </summary>
+        string ExcludeScenarioTags { get; set; }
+
+        string ScreenShotFolder { get; set; }
     }
 }
 

@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
@@ -60,16 +61,21 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="CommonSteps.cs" />
+    <Compile Include="Steps\CommonSteps.cs" />
     <Compile Include="DependancyResolution.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\ExpectedConditionsExtensions.cs" />
     <Compile Include="Config\ISeleniumConfig.cs" />
     <Compile Include="Extensions\WebDriverExtensions.cs" />
+    <Compile Include="Filters\ExcludeScenarioTags.cs" />
+    <Compile Include="Filters\IncludeScenarioTags.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Config\SeleniumConfig.cs" />
     <Compile Include="Config\WebDriverType.cs" />
     <Compile Include="Extensions\WebElementExtensions.cs" />
+    <Compile Include="Steps\NavigationSteps.cs" />
+    <Compile Include="Steps\ScrollingSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

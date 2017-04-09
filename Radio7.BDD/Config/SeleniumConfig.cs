@@ -53,5 +53,26 @@ namespace Radio7.BDD.Config
             get { return (int)this["mobileWindowWidth"]; }
             set { this["mobileWindowWidth"] = value; }
         }
+
+        [ConfigurationProperty("includeScenarioTags", DefaultValue = null)]
+        public string IncludeScenarioTags
+        {
+            get { return (string)this["includeScenarioTags"]; }
+            set { this["includeScenarioTags"] = value; }
+        }
+
+        [ConfigurationProperty("excludeScenarioTags", DefaultValue = null)]
+        public string ExcludeScenarioTags
+        {
+            get { return (string)this["excludeScenarioTags"]; }
+            set { this["excludeScenarioTags"] = value; }
+        }
+
+        [ConfigurationProperty("screenShotFolder", DefaultValue = @".\ScreenShots")]
+        public string ScreenShotFolder
+        {
+            get { return (string)this["screenShotFolder"]; }
+            set { this["screenShotFolder"] = value; }
+        }
     }
 }

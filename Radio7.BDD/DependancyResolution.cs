@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Configuration;
-using System.Drawing.Imaging;
+using System.IO;
 using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -14,9 +14,11 @@ namespace Radio7.BDD
     [Binding]
     public class DependancyResolution
     {
-        private readonly IObjectContainer _objectContainer;
+        private static IObjectContainer _objectContainer;
         private readonly ISeleniumConfig _seleniumConfig;
         private IWebDriver _webDriver;
+
+        public static IObjectContainer Container => _objectContainer;
 
         protected DependancyResolution(IObjectContainer objectContainer)
         {
@@ -53,15 +55,31 @@ namespace Radio7.BDD
         [AfterScenario]
         public virtual void Close()
         {
-            if (ScenarioContext.Current.TestError != null && _webDriver is ITakesScreenshot)
+            if (_webDriver == null) return;
+
+            if (ScenarioContext.Current.TestError != null 
+                && _webDriver is ITakesScreenshot)
             {
-                var screenshot = (_webDriver as ITakesScreenshot).GetScreenshot();
-                var filename = string.Format("{0}.png", ScenarioContext.Current.ScenarioInfo.Title);
-
-                screenshot.SaveAsFile(filename, ImageFormat.Png);
+                TakeScreenshot(_seleniumConfig);
             }
-
+            
             _webDriver.Close();
+            _webDriver.Quit();
+        }
+
+        private void TakeScreenshot(ISeleniumConfig config)
+        {
+            var screenshot = (_webDriver as ITakesScreenshot).GetScreenshot();
+            var filename = $"{ScenarioContext.Current.ScenarioInfo.Title}.png";
+
+            EnsureScreenshotFolder(config);
+
+            File.WriteAllBytes(filename, screenshot.AsByteArray);
+        }
+
+        private static void EnsureScreenshotFolder(ISeleniumConfig config)
+        {
+            if (!Directory.Exists(config.ScreenShotFolder)) Directory.CreateDirectory(config.ScreenShotFolder);
         }
 
         private IWebDriver GetWebDriver()

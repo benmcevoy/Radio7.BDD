@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using Radio7.BDD.Extensions;
+using Radio7.BDD.Steps;
 using TechTalk.SpecFlow;
 
 namespace Radio7.BDD.SampleWebsite.Test
