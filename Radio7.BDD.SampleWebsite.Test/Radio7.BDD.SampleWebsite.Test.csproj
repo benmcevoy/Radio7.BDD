@@ -68,6 +68,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GetLocation.feature</DependentUpon>
     </Compile>
+    <Compile Include="IncludeExcludeTags.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IncludeExcludeTags.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SamplePage.cs" />
     <Compile Include="SampleSteps.cs" />
@@ -82,6 +87,10 @@
     <None Include="GetLocation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>GetLocation.feature.cs</LastGenOutput>
+    </None>
+    <None Include="IncludeExcludeTags.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>IncludeExcludeTags.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="WaitForExpectedConditions.feature">

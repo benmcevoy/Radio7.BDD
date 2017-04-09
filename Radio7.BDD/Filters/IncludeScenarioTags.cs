@@ -43,7 +43,7 @@ namespace Radio7.BDD.Filters
                 (IUnitTestRuntimeProvider) ScenarioContext.Current.GetBindingInstance(typeof(IUnitTestRuntimeProvider));
 
             unitTestRuntimeProvider.TestIgnore(
-                $"Scenario '{ScenarioContext.Current.ScenarioInfo.Title}' was not taged with an include tag and is being skipped.");
+                $"Scenario '{ScenarioContext.Current.ScenarioInfo.Title}' was not tagged with an include tag and is being skipped.");
         }
     }
 }
